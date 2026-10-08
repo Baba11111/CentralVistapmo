@@ -1,0 +1,1 @@
+{"uuid":"833b009d-c9fc-4499-a03a-c07d3f802094","name":"com.centralvista.tests.LoginTest","children":["908f9c12-82f8-46b6-b042-6deafeee1442"],"befores":[{"name":"setUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1791263544727,"stop":1791263546069}],"afters":[],"start":1791263245324,"stop":1791263546085}

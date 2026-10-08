@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Test(failed)">
+    <classes>
+      <class name="com.centralvista.tests.EmployeeTest">
+        <methods>
+          <include name="reqforw_issuer"/>
+          <include name="logout_approver"/>
+          <include name="loginapprover"/>
+          <include name="setUp"/>
+          <include name="employee_list"/>
+          <include name="tearDown"/>
+          <include name="employeeadmin_logout"/>
+          <include name="emp_amn_requestcar"/>
+          <include name="emp_amn_verifyemployeeinfo"/>
+          <include name="setUpAndSwitchRole"/>
+          <include name="reqfmove_statuslist"/>
+          <include name="verifyreq_approver"/>
+          <include name="emp_admin_requestverify"/>
+        </methods>
+      </class> <!-- com.centralvista.tests.EmployeeTest -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

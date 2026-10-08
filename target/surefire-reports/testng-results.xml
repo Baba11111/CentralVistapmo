@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="12" passed="11" failed="1" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-10-06T10:44:57 IST" name="Surefire suite" finished-at="2026-10-06T10:50:01 IST" duration-ms="304054">
+    <groups>
+      <group name="regression">
+        <method signature="EmployeeTest.valid_registrationallvalue()[pri:1, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" name="valid_registrationallvalue" class="com.centralvista.tests.EmployeeTest"/>
+        <method signature="EmployeeTest.employee_list()[pri:2, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" name="employee_list" class="com.centralvista.tests.EmployeeTest"/>
+        <method signature="EmployeeTest.emp_amn_verifyemployeeinfo()[pri:3, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" name="emp_amn_verifyemployeeinfo" class="com.centralvista.tests.EmployeeTest"/>
+        <method signature="EmployeeTest.emp_amn_requestcar()[pri:4, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" name="emp_amn_requestcar" class="com.centralvista.tests.EmployeeTest"/>
+        <method signature="EmployeeTest.emp_admin_requestverify()[pri:5, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" name="emp_admin_requestverify" class="com.centralvista.tests.EmployeeTest"/>
+        <method signature="EmployeeTest.employeeadmin_logout()[pri:6, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" name="employeeadmin_logout" class="com.centralvista.tests.EmployeeTest"/>
+        <method signature="EmployeeTest.loginapprover()[pri:7, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" name="loginapprover" class="com.centralvista.tests.EmployeeTest"/>
+        <method signature="EmployeeTest.verifyreq_approver()[pri:8, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" name="verifyreq_approver" class="com.centralvista.tests.EmployeeTest"/>
+        <method signature="EmployeeTest.reqforw_issuer()[pri:9, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" name="reqforw_issuer" class="com.centralvista.tests.EmployeeTest"/>
+        <method signature="EmployeeTest.reqfmove_statuslist()[pri:10, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" name="reqfmove_statuslist" class="com.centralvista.tests.EmployeeTest"/>
+        <method signature="EmployeeTest.logout_approver()[pri:11, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" name="logout_approver" class="com.centralvista.tests.EmployeeTest"/>
+      </group> <!-- regression -->
+      <group name="sanity">
+        <method signature="EmployeeTest.valid_registrationallvalue()[pri:1, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" name="valid_registrationallvalue" class="com.centralvista.tests.EmployeeTest"/>
+        <method signature="EmployeeTest.employee_list()[pri:2, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" name="employee_list" class="com.centralvista.tests.EmployeeTest"/>
+        <method signature="EmployeeTest.emp_amn_verifyemployeeinfo()[pri:3, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" name="emp_amn_verifyemployeeinfo" class="com.centralvista.tests.EmployeeTest"/>
+        <method signature="EmployeeTest.emp_amn_requestcar()[pri:4, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" name="emp_amn_requestcar" class="com.centralvista.tests.EmployeeTest"/>
+        <method signature="EmployeeTest.emp_admin_requestverify()[pri:5, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" name="emp_admin_requestverify" class="com.centralvista.tests.EmployeeTest"/>
+        <method signature="EmployeeTest.employeeadmin_logout()[pri:6, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" name="employeeadmin_logout" class="com.centralvista.tests.EmployeeTest"/>
+        <method signature="EmployeeTest.loginapprover()[pri:7, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" name="loginapprover" class="com.centralvista.tests.EmployeeTest"/>
+        <method signature="EmployeeTest.verifyreq_approver()[pri:8, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" name="verifyreq_approver" class="com.centralvista.tests.EmployeeTest"/>
+        <method signature="EmployeeTest.reqforw_issuer()[pri:9, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" name="reqforw_issuer" class="com.centralvista.tests.EmployeeTest"/>
+        <method signature="EmployeeTest.reqfmove_statuslist()[pri:10, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" name="reqfmove_statuslist" class="com.centralvista.tests.EmployeeTest"/>
+        <method signature="EmployeeTest.logout_approver()[pri:11, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" name="logout_approver" class="com.centralvista.tests.EmployeeTest"/>
+      </group> <!-- sanity -->
+    </groups>
+    <test started-at="2026-10-06T10:44:57 IST" name="Surefire test" finished-at="2026-10-06T10:50:01 IST" duration-ms="304054">
+      <class name="com.centralvista.tests.LoginTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.centralvista.tests.LoginTest@4d18aa28]" started-at="2026-10-06T10:50:00 IST" name="setUp" finished-at="2026-10-06T10:50:01 IST" duration-ms="1251" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="openApplicationTest()[pri:0, instance:com.centralvista.tests.LoginTest@4d18aa28]" started-at="2026-10-06T10:50:01 IST" name="openApplicationTest" finished-at="2026-10-06T10:50:01 IST" duration-ms="12" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openApplicationTest -->
+      </class> <!-- com.centralvista.tests.LoginTest -->
+      <class name="com.centralvista.tests.EmployeeTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" started-at="2026-10-06T10:44:57 IST" name="setUp" finished-at="2026-10-06T10:45:00 IST" duration-ms="2497" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="setUpAndSwitchRole()[pri:0, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" started-at="2026-10-06T10:45:00 IST" name="setUpAndSwitchRole" finished-at="2026-10-06T10:45:02 IST" duration-ms="2130" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpAndSwitchRole -->
+        <test-method signature="valid_registrationallvalue()[pri:1, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" started-at="2026-10-06T10:45:02 IST" name="valid_registrationallvalue" finished-at="2026-10-06T10:45:32 IST" duration-ms="30230" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- valid_registrationallvalue -->
+        <test-method signature="employee_list()[pri:2, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" started-at="2026-10-06T10:45:32 IST" name="employee_list" finished-at="2026-10-06T10:45:35 IST" duration-ms="3090" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- employee_list -->
+        <test-method signature="emp_amn_verifyemployeeinfo()[pri:3, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" started-at="2026-10-06T10:45:35 IST" name="emp_amn_verifyemployeeinfo" finished-at="2026-10-06T10:45:41 IST" duration-ms="5563" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- emp_amn_verifyemployeeinfo -->
+        <test-method signature="emp_amn_requestcar()[pri:4, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" started-at="2026-10-06T10:45:41 IST" name="emp_amn_requestcar" finished-at="2026-10-06T10:48:58 IST" duration-ms="197222" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[❌ Toast message mismatch! expected [Pass requested successfully] but found [Employee pass details added successfully]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: ❌ Toast message mismatch! expected [Pass requested successfully] but found [Employee pass details added successfully]
+at org.testng.Assert.fail(Assert.java:111)
+at org.testng.Assert.failNotEquals(Assert.java:1578)
+at org.testng.Assert.assertEqualsImpl(Assert.java:150)
+at org.testng.Assert.assertEquals(Assert.java:132)
+at org.testng.Assert.assertEquals(Assert.java:656)
+at com.centralvista.utilities.ToastUtil.validateToastMessage(ToastUtil.java:38)
+at com.centralvista.tests.EmployeeTest.emp_amn_requestcar(EmployeeTest.java:328)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:155)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:169)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:88)
+at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:137)
+at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- emp_amn_requestcar -->
+        <test-method signature="emp_admin_requestverify()[pri:5, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" started-at="2026-10-06T10:48:58 IST" name="emp_admin_requestverify" finished-at="2026-10-06T10:49:08 IST" duration-ms="10231" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- emp_admin_requestverify -->
+        <test-method signature="employeeadmin_logout()[pri:6, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" started-at="2026-10-06T10:49:08 IST" name="employeeadmin_logout" finished-at="2026-10-06T10:49:10 IST" duration-ms="1687" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- employeeadmin_logout -->
+        <test-method signature="loginapprover()[pri:7, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" started-at="2026-10-06T10:49:10 IST" name="loginapprover" finished-at="2026-10-06T10:49:11 IST" duration-ms="764" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginapprover -->
+        <test-method signature="verifyreq_approver()[pri:8, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" started-at="2026-10-06T10:49:11 IST" name="verifyreq_approver" finished-at="2026-10-06T10:49:21 IST" duration-ms="10815" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyreq_approver -->
+        <test-method signature="reqforw_issuer()[pri:9, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" started-at="2026-10-06T10:49:21 IST" name="reqforw_issuer" finished-at="2026-10-06T10:49:48 IST" duration-ms="26495" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- reqforw_issuer -->
+        <test-method signature="reqfmove_statuslist()[pri:10, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" started-at="2026-10-06T10:49:48 IST" name="reqfmove_statuslist" finished-at="2026-10-06T10:49:58 IST" duration-ms="10288" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- reqfmove_statuslist -->
+        <test-method signature="logout_approver()[pri:11, instance:com.centralvista.tests.EmployeeTest@6eeade6c]" started-at="2026-10-06T10:49:58 IST" name="logout_approver" finished-at="2026-10-06T10:50:00 IST" duration-ms="1670" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logout_approver -->
+      </class> <!-- com.centralvista.tests.EmployeeTest -->
+    </test> <!-- Surefire test -->
+  </suite> <!-- Surefire suite -->
+</testng-results>
