@@ -3,7 +3,7 @@
  * @since 13-Aug-2026
  * @version 1.0
  * 
- * Description: [Enter class purpose here]
+ * Description: [This is base]
  */
 
 package com.centralvista.base; 
