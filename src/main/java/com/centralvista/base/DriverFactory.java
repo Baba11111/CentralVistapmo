@@ -17,37 +17,52 @@ import com.centralvista.utilities.ConfigReader;
 
 public class DriverFactory {
 
-    private static WebDriver driver;
+	private static WebDriver driver;
 
-    public static void initDriver() {
+	public static void initDriver() {
 
-        String browser =
-                ConfigReader.getProperty("browser");
+	    String browser = ConfigReader.getProperty("browser");
 
-        if (browser.equalsIgnoreCase("chrome")) {
+	    // JVM parameter takes priority over config.properties
+	    String headlessValue = System.getProperty(
+	            "headless",
+	            ConfigReader.getProperty("headless")
+	    );
 
-            driver = new ChromeDriver();
+	    boolean headless = Boolean.parseBoolean(
+	            headlessValue == null ? "false" : headlessValue
+	    );
 
-        } else {
+	    if (browser.equalsIgnoreCase("chrome")) {
 
-            throw new RuntimeException(
-                    "Browser not supported: " + browser
-            );
-        }
-    }
+	        ChromeOptions options = new ChromeOptions();
 
-    public static WebDriver getDriver() {
+	        if (headless) {
+	            options.addArguments("--headless=new");
+	        }
 
-        return driver;
-    }
+	        options.addArguments("--window-size=1920,1080");
 
-    public static void quitDriver() {
+	        driver = new ChromeDriver(options);
 
-        if (driver != null) {
+	    } else {
 
-            driver.quit();
+	        throw new RuntimeException(
+	                "Browser not supported: " + browser
+	        );
+	    }
+	}
 
-            driver = null;
-        }
-    }
-}
+	public static WebDriver getDriver() {
+	    return driver;
+	}
+
+	public static void quitDriver() {
+
+	    if (driver != null) {
+	        driver.quit();
+	        driver = null;
+	    }
+	}
+
+	}
