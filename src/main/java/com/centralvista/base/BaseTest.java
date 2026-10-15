@@ -13,11 +13,10 @@ import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
-
-
+import com.centralvista.base.DriverFactory;
 import com.centralvista.utilities.ConfigReader;
-
 
 
 public class BaseTest {
@@ -25,7 +24,7 @@ public class BaseTest {
     protected WebDriver driver;
     protected WebDriverWait wait;
 
-    @BeforeClass(alwaysRun = true)
+    @BeforeClass(alwaysRun= true)
     public void setUp() {
 
         // Initialize browser
@@ -66,9 +65,9 @@ public class BaseTest {
         driver.get(url);
     }
 
-//    @AfterSuite(alwaysRun = true)
-//    public void tearDown() {
-//
-//        DriverFactory.quitDriver();
-//    }
+    @AfterSuite(alwaysRun = true)
+    public void tearDown() {
+
+        DriverFactory.quitDriver();
+    }
 }

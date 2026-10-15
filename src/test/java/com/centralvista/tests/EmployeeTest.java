@@ -324,7 +324,7 @@ public class EmployeeTest extends BaseTest {
 		emppage.IcarRequestButton();
 		WebElement toast = driver.findElement(By.xpath("//div[@id='toast-container']"));
 		String actual = toast.getText();
-		String exceptMessage = "Pass requested successfully";
+		String exceptMessage = "Employee pass details added successfully";
 		ToastUtil.validateToastMessage(DriverFactory.getDriver(), exceptMessage);
 	}
 	
