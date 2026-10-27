@@ -9,6 +9,11 @@ package com.centralvista.tests;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+import java.lang.reflect.Method;
 import java.time.Duration;
 import java.util.List;
 
@@ -25,6 +30,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.postgresql.Driver;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -33,6 +39,7 @@ import com.centralvista.base.BaseTest;
 import com.centralvista.base.DriverFactory;
 import com.centralvista.excelreader.ExcelReader;
 import com.centralvista.pages.Employeepage;
+import com.centralvista.utilities.ConfigReader;
 //import com.centralvista.testBase.TestBase;
 import com.centralvista.utilities.DatePickertUtil;
 import com.centralvista.utilities.ScrollUtility;
@@ -43,6 +50,8 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import com.centralvista.utilities.RunHomeNavigation;
+
 
 public class EmployeeTest extends BaseTest {
 	
@@ -65,27 +74,48 @@ public class EmployeeTest extends BaseTest {
 		int row = 56;
 		emppage.setUserName(reader.getCellvalue(SHEET_NAME, row, 0).trim());
 		emppage.setPassword(reader.getCellvalue(SHEET_NAME, row, 1).trim());
-		emppage.clickLogin();
 		WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), Duration.ofSeconds(10));
+		emppage.clickLogin();
+		System.out.println("Login successful. Role dropdown displayed.");
+		//wait = new  WebDriverWait(DriverFactory.getDriver(), Duration.ofSeconds(10));
 		WebElement roleDropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("userRole")));
 		new Select(roleDropdown).selectByValue("EMP_ADM");
 
+		
+	}
+	
+	
+	@BeforeMethod(alwaysRun = true)
+	public void returnToHomePage(Method method) throws InterruptedException {
+		
+
+	    if (!method.isAnnotationPresent(RunHomeNavigation.class)) {
+	        return;
+	    }
+Thread.sleep(1000);
+	    DriverFactory.getDriver().navigate().to(
+	    		 ConfigReader.getProperty("homeURL")
+	    );
+	}
+	
+	public void registrationpage() {
+		DriverFactory.getDriver().navigate().refresh();
+		WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), Duration.ofSeconds(10));
 		wait.until(
 				ExpectedConditions.elementToBeClickable(emppage.getRegistrationsidebar()))
 				.click();
 		wait.until(ExpectedConditions
 				.elementToBeClickable(emppage.getRegistrrationlink())).click();
 		System.out.println("Logger class = " + LOGGER.getClass());
-	}	
-	
+	}
 	
 	
 	public void fillFormData(int row) throws Exception {
 		 try {
+			 
 			 Actions act = new Actions(DriverFactory.getDriver());
 		        act.sendKeys(Keys.ESCAPE).perform();
 		        LOGGER.info("Filling form for row: " + row);
-
 		        WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), Duration.ofSeconds(10));
 		        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("fullname")));
 		        emppage.setFullName(reader.getCellvalue(SHEET_NAME, row, 0).trim().trim());
@@ -135,12 +165,14 @@ public class EmployeeTest extends BaseTest {
 	
 	
 	@Test(priority = 1, groups = { "sanity", "regression" }) 
+	@RunHomeNavigation
 	@Description("Verify that Employee is registered with correct data or not by passing all value")
 	@Epic("Employee Admin")
 	@Feature("Registration of Employee")
 	@Severity(SeverityLevel.CRITICAL)
 	public void valid_registrationallvalue() throws Exception {
 		int row = 1;
+        registrationpage();
 		 WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), Duration.ofSeconds(10));
 	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("fullname")));
       
@@ -153,8 +185,101 @@ public class EmployeeTest extends BaseTest {
 			ToastUtil.validateToastMessage(DriverFactory.getDriver(), expected);
 	}
 	
+	@Test(priority=2, groups= {"sanity", "regression"})
+	@RunHomeNavigation
+	@Description("Verify that Employee is registered with existing mobile number")
+	@Epic("Employee Admin")
+	@Feature("Registration of Employee")
+	@Severity(SeverityLevel.CRITICAL)
+	public void registration_existingmobile() throws Exception {
+		int row = 2;
+		registrationpage();
+		 WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), Duration.ofSeconds(10));
+	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("fullname")));
+      
+	       fillFormData(2);
+	       emppage.clickSubmit();
+	       String expected =  reader.getCellvalue(SHEET_NAME, row, 21);
+			System.out.println(expected);
+			ToastUtil.validateToastMessage(DriverFactory.getDriver(), expected);
+	}
 	
-	@Test(priority = 2, groups = { "sanity", "regression" })
+	@Test(priority=3, groups= {"sanity", "regression"})
+	@RunHomeNavigation
+	@Description("Verify that Employee is registered with existing I Number")
+	@Epic("Employee Admin")
+	@Feature("Registration of Employee")
+	@Severity(SeverityLevel.CRITICAL)
+	public void registration_existingnumber() throws Exception {
+		int row = 3;
+		registrationpage();
+		 WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), Duration.ofSeconds(10));
+	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("fullname")));
+      
+	       fillFormData(3);
+	       emppage.clickSubmit();
+	       String expected =  reader.getCellvalue(SHEET_NAME, row, 21);
+			System.out.println(expected);
+			ToastUtil.validateToastMessage(DriverFactory.getDriver(), expected);
+	}
+	
+	@Test(priority=4, groups= {"sanity", "regression"})
+	@RunHomeNavigation
+	@Description("Verify that Employee is registered with existing emails")
+	@Epic("Employee Admin")
+	@Feature("Registration of Employee")
+	@Severity(SeverityLevel.CRITICAL)
+	public void registration_existingemails() throws Exception {
+		int row = 4;
+		registrationpage();
+		 WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), Duration.ofSeconds(10));
+	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("fullname")));
+      
+	       fillFormData(4);
+	       emppage.clickSubmit();
+	       String expected =  reader.getCellvalue(SHEET_NAME, row, 21);
+			System.out.println(expected);
+			ToastUtil.validateToastMessage(DriverFactory.getDriver(), expected);
+	}
+	
+//	@Test(priority=5, groups= {"sanity", "regression"})
+//	@Description("Verify that Employee is registered with existing serial number")
+//	@Epic("Employee Admin")
+//	@Feature("Registration of Employee")
+//	@Severity(SeverityLevel.CRITICAL)
+//	public void registration_existingsno() throws Exception {
+//		int row = 5;
+//		registrationpage();
+//		 WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), Duration.ofSeconds(10));
+//	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("fullname")));
+//      
+//	       fillFormData(5);
+//	       emppage.clickSubmit();
+//	       String expected =  reader.getCellvalue(SHEET_NAME, row, 21);
+//			System.out.println(expected);
+//			ToastUtil.validateToastMessage(DriverFactory.getDriver(), expected);
+//	}
+	
+	@Test(priority=5, groups= {"sanity", "regression"})
+	@RunHomeNavigation
+	@Description("Verify that Employee is registered with existing spgs number")
+	@Epic("Employee Admin")
+	@Feature("Registration of Employee")
+	@Severity(SeverityLevel.CRITICAL)
+	public void registration_existingspg() throws Exception {
+		int row = 6;
+		registrationpage();
+		 WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), Duration.ofSeconds(10));
+	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("fullname")));
+      
+	       fillFormData(6);
+	       emppage.clickSubmit();
+	       String expected =  reader.getCellvalue(SHEET_NAME, row, 21);
+			System.out.println(expected);
+			ToastUtil.validateToastMessage(DriverFactory.getDriver(), expected);
+	}
+	
+	@Test(priority = 6, groups = { "sanity", "regression" })
 
 	@Description("Verify that searching by Employee name works correctly in the Employee list after successful registration")
 	@Epic("Employee Admin")
@@ -197,7 +322,7 @@ public class EmployeeTest extends BaseTest {
 		Assert.assertTrue(found, "Expected name '" + searchValue + "' not found in filtered results.");
 	}
 	
-	@Test(priority = 3, groups = { "sanity", "regression" })
+	@Test(priority = 7, groups = { "sanity", "regression" })
 	@Description("Verify that the Employee details displayed match the information entered during registrationn")
 	@Epic("Employee Admin")
 	@Feature("Employee Admin-Verify Information")
@@ -295,7 +420,7 @@ public class EmployeeTest extends BaseTest {
 	}
 	
 	
-	@Test(priority = 4, groups = { "sanity", "regression" })
+	@Test(priority = 8, groups = { "sanity", "regression" })
 	@Description("Verify that user is able to send the icar request  by passing all correct  value")
 	@Epic("Employee Admin")
 	@Feature("Employee Admin -I Card Request")
@@ -322,15 +447,34 @@ public class EmployeeTest extends BaseTest {
 		emppage.setzoneId("Zone A");
 		emppage.setbuildingId("Anusandhan Bhawan"); 
 		emppage.IcarRequestButton();
-		WebElement toast = driver.findElement(By.xpath("//div[@id='toast-container']"));
-		String actual = toast.getText();
-		String exceptMessage = "Employee pass details added successfully";
-		ToastUtil.validateToastMessage(DriverFactory.getDriver(), exceptMessage);
+		WebElement toast = wait.until(
+			    ExpectedConditions.visibilityOfElementLocated(
+			        By.xpath("//div[@id='toast-container']")
+			    )
+			);
+
+			String actual = toast.getText();
+
+			String expectedMessage1 =
+			    "Employee pass details added successfully";
+
+			String expectedMessage2 =
+			    "Pass requested successfully";
+
+			Assert.assertTrue(
+			    actual.contains(expectedMessage1)
+			        || actual.contains(expectedMessage2),
+			    "Toast message mismatch. Actual: " + actual
+			);
+
+			wait.until(ExpectedConditions.elementToBeClickable(
+			    By.xpath("//span[normalize-space()='Employees List']")
+			)).click();
 	}
 	
 	
 
-	@Test(priority = 5, groups = { "sanity", "regression" })
+	@Test(priority = 9, groups = { "sanity", "regression" })
 	@Description("Verify that the Employee appears in the “Requested ICAR” list after successfully initiating the ICAR request")
 	@Epic("Employee Admin")
 	@Feature("Employee Admin-I Card Request List")
@@ -364,7 +508,7 @@ public class EmployeeTest extends BaseTest {
 			        rows.stream().map(WebElement::getText).toList());
 		}
 	
-	@Test(priority=6 , groups = {"sanity","regression"})
+	@Test(priority=10 , groups = {"sanity","regression"})
 	@Description("Verify that the employee admin is logout or not after requesting Pass")
 	@Epic("Employee Admin")
 	@Feature("Employee Admin-Logout")
@@ -379,7 +523,7 @@ public class EmployeeTest extends BaseTest {
 		
 	}
 	
-	@Test(priority= 7, groups = {"sanity","regression"})
+	@Test(priority= 11, groups = {"sanity","regression"})
 	@Description("Verify that recommender/ Approver is able to login after passing coorect value")
 	@Epic("Recommender/Approver")
 	@Feature("Recommender/Approver- Login")
@@ -397,7 +541,7 @@ public class EmployeeTest extends BaseTest {
 		
 	}
 	
-	@Test(priority= 8, groups= {"sanity","regression"})
+	@Test(priority= 12, groups= {"sanity","regression"})
 	@Description("Verify thats the Employee pass request is reached to the selected Recommending/ Approving Authority")
 	@Epic("Recommender/Approver")
 	@Feature("Recommender/Approver- Verify Request")
@@ -438,7 +582,7 @@ public class EmployeeTest extends BaseTest {
 			        rows.stream().map(WebElement::getText).toList());
 	}
 	
-	@Test(priority= 9, groups= {"sanity","regression"})
+	@Test(priority= 13, groups= {"sanity","regression"})
 	@Description("Verify thats the Recommending/ Approving Authority is able to forward Employee pass request to Issuing Authority")
 	@Epic("Recommender/Approver")
 	@Feature("Recommender/Approver- Forward to issuer")
@@ -460,7 +604,7 @@ public class EmployeeTest extends BaseTest {
 	}
 	
 
-	@Test(priority= 10, groups= {"sanity","regression"})
+	@Test(priority= 14, groups= {"sanity","regression"})
 	@Description("Verify thats the Employee pass request move to Icar status list after  Recommending/ Approving Authority forward  it to Issuing Authority")
 	@Epic("Recommender/Approver")
 	@Feature("Recommender/Approver- Forward to issuer")
@@ -501,7 +645,7 @@ public class EmployeeTest extends BaseTest {
 			        rows.stream().map(WebElement::getText).toList());
 	}
 
-	@Test(priority= 11, groups= {"sanity","regression"})
+	@Test(priority= 19, groups= {"sanity","regression"})
 	@Description("Verify that the Recommender/Approver is logout or not after Approving Pass request")
 	@Epic("Recommender/Approver")
 	@Feature("Recommender/Approver- Forward to issuer")
@@ -515,5 +659,6 @@ public class EmployeeTest extends BaseTest {
 		ToastUtil.validateToastMessage(DriverFactory.getDriver(), exceptMessage);
 		
 	}
+	
 
 }

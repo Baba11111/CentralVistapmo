@@ -133,6 +133,8 @@ public class Employeepage {
 	public void clickLogin() {
 
 		btnLogin.click();
+		
+		
 	}
 
 	public void setUserName(String uName) {
